@@ -25,7 +25,7 @@ export const cadastrarAvaliacao = (token, avaliacao) =>
 export function getRoles(token) {
   try {
     const payload = JSON.parse(atob(token.split('.')[1]))
-    return payload['https://social-insper.com/roles'] || []
+    return payload['https://social-insper.com/roles'] || payload.roles || []
   } catch {
     return []
   }
