@@ -160,8 +160,8 @@ export default function App() {
                 {avaliacoes.map((a) => (
                   <tr key={a.id}>
                     <td>{a.id}</td>
-                    <td>{a.titulo}</td>
-                    <td>{a.descricao}</td>
+                    <td>{a.título}</td>
+                    <td>{a.descrição}</td>
                     <td>{a.prioridade}</td>
                     <td>{a.email}</td>
 
