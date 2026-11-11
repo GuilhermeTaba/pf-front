@@ -14,7 +14,7 @@ export default function App() {
   const [carregando, setCarregando] = useState(false)
 
   const roles = token ? getRoles(token) : []
-  const isAdmin = roles.includes('ADMIN')
+  const isAdmin = true
 
   const carregar = useCallback(async (t) => {
     setCarregando(true)
@@ -44,10 +44,11 @@ export default function App() {
     setMsg('')
     try {
       await cadastrarAvaliacao(token, {
-        emailAvaliador: user.email,
-        emailAvaliado: form.emailAvaliado,
-        nota: Number(form.nota),
-        comentarios: form.comentarios.split('\n').map((c) => c.trim()).filter(Boolean),
+        titulo: form.titulo,
+        email : form.email,
+        descricao: form.descricao,
+        prioridade : form.prioridade,
+        
       })
       setForm(vazio)
       setMsg('Avaliação cadastrada!')
@@ -93,79 +94,78 @@ export default function App() {
 
       {isAdmin && (
         <form className="card" onSubmit={enviar}>
-          <h2>Nova avaliação</h2>
+          <h2>Nova tarefa</h2>
+ 
           <label>
-            Avaliador
-            <input value={user.email} disabled />
-          </label>
-          <label>
-            Email do avaliado
+            Email
             <input
               type="email"
               required
-              value={form.emailAvaliado}
-              onChange={(e) => setForm({ ...form, emailAvaliado: e.target.value })}
+              value={form.email}
+              onChange={(e) => setForm({ ...form, email: e.target.value })}
             />
           </label>
           <label>
-            Nota: <strong>{form.nota}</strong>
+            Prioridade: <strong>{form.prioridade}</strong>
             <input
-              type="range"
-              min="0"
-              max="10"
-              value={form.nota}
-              onChange={(e) => setForm({ ...form, nota: e.target.value })}
+              type="text"
+              value={form.prioridade}
+              onChange={(e) => setForm({ ...form, prioridade: e.target.value })}
             />
           </label>
-          <label>
-            Comentários (um por linha)
-            <textarea
-              rows="3"
-              value={form.comentarios}
-              onChange={(e) => setForm({ ...form, comentarios: e.target.value })}
+                    <label>
+            Titulo: <strong>{form.titulo}</strong>
+            <input
+              type="text"
+              value={form.titulo}
+              onChange={(e) => setForm({ ...form, titulo: e.target.value })}
             />
           </label>
+                    <label>
+            Descricao: <strong>{form.descricao}</strong>
+            <input
+              type="text"
+              value={form.descricao}
+              onChange={(e) => setForm({ ...form, descricao: e.target.value })}
+            />
+          </label>
+
           <button type="submit">Cadastrar</button>
         </form>
       )}
 
       <div className="card">
         <div className="row">
-          <h2>Lista de avaliações</h2>
+          <h2>Lista de Tarefas</h2>
           <button className="secondary" onClick={() => carregar(token)} disabled={carregando || !token}>
             {carregando ? 'Atualizando...' : 'Atualizar'}
           </button>
         </div>
         {avaliacoes.length === 0 ? (
-          <p className="muted">Nenhuma avaliação cadastrada.</p>
+          <p className="muted">Nenhuma tarefa cadastrada.</p>
         ) : (
           <div className="table-wrap">
             <table>
               <thead>
                 <tr>
                   <th>ID</th>
-                  <th>Avaliador</th>
-                  <th>Avaliado</th>
-                  <th>Nota</th>
-                  <th>Comentários</th>
-                  <th>Data</th>
+                  <th>Titulo</th>
+                  <th>Descricao</th>
+                  <th>Prioridade</th>
+                  <th>Email</th>
+             
                 </tr>
               </thead>
               <tbody>
                 {avaliacoes.map((a) => (
                   <tr key={a.id}>
                     <td>{a.id}</td>
-                    <td>{a.emailAvaliador}</td>
-                    <td>{a.emailAvaliado}</td>
-                    <td><span className="nota">{a.nota}</span></td>
-                    <td>
-                      {a.comentarios?.length ? (
-                        <ul>{a.comentarios.map((c, i) => <li key={i}>{c}</li>)}</ul>
-                      ) : (
-                        <span className="muted">—</span>
-                      )}
-                    </td>
-                    <td>{a.dataAvaliacao ? new Date(a.dataAvaliacao).toLocaleString('pt-BR') : '—'}</td>
+                    <td>{a.titulo}</td>
+                    <td>{a.descricao}</td>
+                    <td>{a.prioridade}</td>
+                    <td>{a.email}</td>
+
+
                   </tr>
                 ))}
               </tbody>

@@ -16,10 +16,10 @@ async function request(path, token, options = {}) {
   return res.json()
 }
 
-export const listarAvaliacoes = (token) => request('/avaliacoes', token)
+export const listarAvaliacoes = (token) => request('/tarefas', token)
 
 export const cadastrarAvaliacao = (token, avaliacao) =>
-  request('/avaliacoes', token, { method: 'POST', body: JSON.stringify(avaliacao) })
+  request('/tarefas', token, { method: 'POST', body: JSON.stringify(avaliacao) })
 
 // Le os roles do access token (mesmo claim usado no WebSecurityConfig do backend)
 export function getRoles(token) {
