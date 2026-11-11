@@ -196,7 +196,7 @@ export default function App() {
               type="text"
               required
               value={idDel}
-              onChange={(e) => setIdDel(e.value)}
+              onChange={(e) => setIdDel(e.target.value)}
             />
           </label>
           
