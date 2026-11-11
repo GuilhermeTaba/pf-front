@@ -64,7 +64,7 @@ export default function App() {
     return (
       <div className="center">
         <div className="card login">
-          <h1>Sistema de Avaliações</h1>
+          <h1>Sistema de Tarefas</h1>
           <p>Faça login para continuar.</p>
           <button onClick={() => loginWithRedirect()}>Entrar</button>
         </div>
