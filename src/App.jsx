@@ -198,7 +198,7 @@ export default function App() {
             />
           </label>
           
-          <button type="deletar">Deletar</button>
+          <button type="submit">Deletar</button>
           </form>
 
         </div>
