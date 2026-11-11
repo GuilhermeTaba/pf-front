@@ -18,6 +18,7 @@ export default function App() {
   const roles = token ? getRoles(token) : []
   const isAdmin = true
   async function deletarId(){
+    e.preventDefault()
     try{
       console.log(idDel)
       request(`/tarefas/${idDel}`)
