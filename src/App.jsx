@@ -185,7 +185,9 @@ export default function App() {
 
    
 
-        <form className="card" onSubmit={deletarId}>
+
+        </div>
+                <form className="card" onSubmit={deletarId}>
           <h2>Deletar tarefa</h2>
  
           <label>
@@ -201,7 +203,6 @@ export default function App() {
           <button type="submit">Deletar</button>
           </form>
 
-        </div>
       </div>
 
   )
