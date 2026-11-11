@@ -21,7 +21,7 @@ export default function App() {
     e.preventDefault()
     try{
       console.log(idDel)
-      await deletar(`/tarefas/${idDel}`, token)
+      await deletar(token, idDel )
     }catch (e) {
       setErro(e.message)
     } finally {
