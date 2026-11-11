@@ -21,9 +21,9 @@ export default function App() {
     e.preventDefault()
     try{
       console.log(idDel)
-      await deletar(token, idDel )
+      await deletar(token, idDel)
     }catch (e) {
-      setErro(e.message)
+
     } finally {
       setCarregando(false)
     }
