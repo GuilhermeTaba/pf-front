@@ -197,6 +197,8 @@ export default function App() {
               onChange={(e) => setIdDel(e.value)}
             />
           </label>
+          
+          <button type="deletar">Deletar</button>
           </form>
 
         </div>
