@@ -10,7 +10,7 @@ export default function App() {
   const [avaliacoes, setAvaliacoes] = useState([])
   const [form, setForm] = useState(vazio)
 
-  const [idDel, setIdDel] = useState(vazio)
+  const [idDel, setIdDel] = useState('')
   const [erro, setErro] = useState('')
   const [msg, setMsg] = useState('')
   const [carregando, setCarregando] = useState(false)
@@ -191,7 +191,7 @@ export default function App() {
           <label>
             Id
             <input
-              type="email"
+              type="text"
               required
               value={idDel}
               onChange={(e) => setIdDel(e.value)}
