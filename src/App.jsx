@@ -54,7 +54,7 @@ export default function App() {
     setMsg('')
     try {
       await cadastrarAvaliacao(token, {
-        titulo: form.titulo,
+        título: form.titulo,
         email : form.email,
         descricao: form.descricao,
         prioridade : form.prioridade,
