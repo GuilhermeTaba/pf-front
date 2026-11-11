@@ -54,9 +54,9 @@ export default function App() {
     setMsg('')
     try {
       await cadastrarAvaliacao(token, {
-        título: form.titulo,
+        título: form.título,
         email : form.email,
-        descricao: form.descricao,
+        descrição: form.descrição,
         prioridade : form.prioridade,
         
       })
@@ -124,19 +124,19 @@ export default function App() {
             />
           </label>
                     <label>
-            Titulo: <strong>{form.titulo}</strong>
+            Titulo: <strong>{form.título}</strong>
             <input
               type="text"
-              value={form.titulo}
-              onChange={(e) => setForm({ ...form, titulo: e.target.value })}
+              value={form.título}
+              onChange={(e) => setForm({ ...form, título: e.target.value })}
             />
           </label>
                     <label>
-            Descricao: <strong>{form.descricao}</strong>
+            Descricao: <strong>{form.descrição}</strong>
             <input
               type="text"
               value={form.descricao}
-              onChange={(e) => setForm({ ...form, descricao: e.target.value })}
+              onChange={(e) => setForm({ ...form, descrição: e.target.value })}
             />
           </label>
 
