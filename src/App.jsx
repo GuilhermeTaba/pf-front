@@ -17,7 +17,7 @@ export default function App() {
 
   const roles = token ? getRoles(token) : []
   const isAdmin = true
-  async function deletarId(){
+  async function deletarId(e){
     e.preventDefault()
     try{
       console.log(idDel)
@@ -189,7 +189,7 @@ export default function App() {
 
 
         </div>
-                <form className="card" onSubmit={deletarId}>
+          <form className="card" onSubmit={deletarId}>
           <h2>Deletar tarefa</h2>
  
           <label>
