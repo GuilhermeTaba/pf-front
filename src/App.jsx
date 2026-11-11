@@ -10,7 +10,7 @@ export default function App() {
   const [avaliacoes, setAvaliacoes] = useState([])
   const [form, setForm] = useState(vazio)
 
-  const [idDel, setIdDel] = useState('')
+  const [idDel, setIdDel] = useState(null)
   const [erro, setErro] = useState('')
   const [msg, setMsg] = useState('')
   const [carregando, setCarregando] = useState(false)
