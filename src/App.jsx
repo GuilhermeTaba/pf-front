@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
-import { listarAvaliacoes, cadastrarAvaliacao, getRoles } from './api'
+import { listarAvaliacoes, cadastrarAvaliacao, getRoles,request } from './api'
 
 const vazio = { emailAvaliado: '', comentarios: '', nota: 5 }
 
@@ -9,13 +9,23 @@ export default function App() {
   const [token, setToken] = useState(null)
   const [avaliacoes, setAvaliacoes] = useState([])
   const [form, setForm] = useState(vazio)
+
+  const [idDel, setIdDel] = useState(vazio)
   const [erro, setErro] = useState('')
   const [msg, setMsg] = useState('')
   const [carregando, setCarregando] = useState(false)
 
   const roles = token ? getRoles(token) : []
   const isAdmin = true
-
+  async function deletarId(){
+    try{
+      request(`${idDel}`)
+    }catch (e) {
+      setErro(e.message)
+    } finally {
+      setCarregando(false)
+    }
+  }
   const carregar = useCallback(async (t) => {
     setCarregando(true)
     setErro('')
@@ -172,7 +182,25 @@ export default function App() {
             </table>
           </div>
         )}
+
+   
+
+        <form className="card" onSubmit={deletarId}>
+          <h2>Deletar tarefa</h2>
+ 
+          <label>
+            Id
+            <input
+              type="email"
+              required
+              value={idDel}
+              onChange={(e) => setIdDel(e.value)}
+            />
+          </label>
+          </form>
+
+        </div>
       </div>
-    </div>
+
   )
 }
