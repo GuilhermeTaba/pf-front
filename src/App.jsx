@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
-import { listarAvaliacoes, cadastrarAvaliacao, getRoles,request } from './api'
+import { listarAvaliacoes, cadastrarAvaliacao, getRoles, deletar } from './api'
 
 const vazio = { emailAvaliado: '', comentarios: '', nota: 5 }
 
@@ -21,7 +21,7 @@ export default function App() {
     e.preventDefault()
     try{
       console.log(idDel)
-      await request(`/tarefas/${idDel}`, token)
+      await deletar(`/tarefas/${idDel}`, token)
     }catch (e) {
       setErro(e.message)
     } finally {
