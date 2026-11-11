@@ -19,6 +19,7 @@ export default function App() {
   const isAdmin = true
   async function deletarId(){
     try{
+      console.log(idDel)
       request(`/tarefas/${idDel}`)
     }catch (e) {
       setErro(e.message)
