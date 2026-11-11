@@ -16,7 +16,7 @@ export async function request(path, token, options = {}) {
   return res.json()
 }
 export const deletar = (token, id) =>
-  api.delete(`/tarefas/${id}`, auth(token))
+  request(`/tarefas/${id}`, auth(token),{ method: 'POST'})
 export const listarAvaliacoes = (token) => request('/tarefas', token)
 
 export const cadastrarAvaliacao = (token, avaliacao) =>
