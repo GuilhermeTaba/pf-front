@@ -21,7 +21,7 @@ export default function App() {
     e.preventDefault()
     try{
       console.log(idDel)
-      await request(`/tarefas/${idDel}`)
+      await request(`/tarefas/${idDel}`, token)
     }catch (e) {
       setErro(e.message)
     } finally {
